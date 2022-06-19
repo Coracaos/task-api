@@ -26,7 +26,6 @@ public class Task {
     @Column(name = "TITLE", length = 60)
     private String title;
 
-    @NotNull
     @Column(name = "DESCRIPTION", length = 2000)
     private String description;
 
@@ -34,6 +33,7 @@ public class Task {
     @Column(name = "STATUS", length = 40)
     private String status;
 
+    @NotNull
     @Column(name = "PRIORITY", length = 40)
     private String priority;
 

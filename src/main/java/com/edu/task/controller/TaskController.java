@@ -3,6 +3,8 @@ package com.edu.task.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,13 +40,13 @@ public class TaskController {
     }
 
     @PostMapping(value = "/tasks")
-    public ResponseEntity<Void> createTask(@RequestBody InputTaskDto inputTaskDto) {
+    public ResponseEntity<Void> createTask(@Valid @RequestBody InputTaskDto inputTaskDto) {
 	Long id = taskService.createTask(inputTaskDto);
 	return ResponseEntity.created(URI.create(id.toString())).build();
     }
 
     @PutMapping(value = "/tasks/{id}")
-    public ResponseEntity<Void> updateTask(@PathVariable Long id, @RequestBody InputTaskDto inputTaskDto) {
+    public ResponseEntity<Void> updateTask(@PathVariable Long id, @Valid @RequestBody InputTaskDto inputTaskDto) {
 	taskService.updateTask(id, inputTaskDto);
 	return ResponseEntity.noContent().build();
     }
